@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Listes de coures</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>        <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="/index.css">
+    </head>
+    <body>
+    <nav class="navbar navbar-expand navbar-dark" style="background-color: #73AD21;">
+        <a class="navbar-brand mb-0 h1" href="/">Listes de courses</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/archived">Historique</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" id="div-lists">
+        <h3>Listes de courses</h3>
+        <div class="row">
+            <div class="col-6">
+                <button type="button" class="btn btn-primary"
+                        data-toggle="modal" data-target="#dialog-add-list">
+                    Ajouter une liste
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover table-condensed">
+                    <thead><tr><th>Magasin</th><th>Date</th></tr></thead>
+                    <tbody id="table-lists"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dialog-add-list">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Ajouter une liste</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-add-personne" onsubmit="return index.addList()">
+                        <div class="form-group">
+                            <label for="add-list-shop">Magasin: </label>
+                            <input type="text" class="form-control" id="add-list-shop"
+                                   required placeholder="Veuillez saisir un nom de magasin"/>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Ajouter">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dialog-delete-list">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content">
+                <div class="modal-body">
+                    Voulez-vous supprimer la liste <span id="label-delete-list"></span> ??
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal">Non</button>
+                    <button class="btn btn-danger" id="btn-delete-list">Oui</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="dialog-edit-list">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modifier une liste</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-edit-personne" onsubmit="return index.updateList()">
+                        <input type="hidden" id="edit-list-id"/>
+                        <div class="form-group">
+                            <label for="add-list-shop">Magasin: </label>
+                            <input type="text" class="form-control" id="edit-list-shop"
+                                   required placeholder="Veuillez saisir un nom de magasin"/>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Enregistrer">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/tools.js"></script>
+    <script src="/model.js"></script>
+    <script src="/services.js"></script>
+    <script src="/index.js"></script>
+    </body>
+</html>
